@@ -1,0 +1,24 @@
+create database Shopping;
+use Shopping;
+create table products(pid int primary key, pname varchar(50), price int);
+desc products;
+insert into products values(1, 'Reynolds 405_Apoorv', 8);
+insert into products values(2, 'HB Draw Pencil_Apoorv', 10);
+insert into products values(3, 'Crayons Rainbow_Apoorv', 12);
+insert into products values(4, 'Notebook_Apoorv', 14);
+insert into products values(5, 'Draw Sheet_Apoorv', 16);
+insert into products values(6, 'Brush Air_Apoorv', 5);
+select *from products;
+create table cartdata(pid int primary key, qty int);
+insert into cartdata values(1,2);
+insert into cartdata values(2,3);
+insert into cartdata values(3,5);
+
+Q1.
+select sum(qty*price) from cartdata,products where cartdata.pid=products.pid;
+
+Q2.
+select products.pname from cartdata,products where qty*price>50 and products.pid=cartdata.pid;
+
+Q3.
+select distinct products.pname,products.pid from products,cartdata where products.pid>3;
